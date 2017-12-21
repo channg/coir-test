@@ -1,0 +1,1 @@
+console.log(`__path__`)

@@ -1,0 +1,47 @@
+{
+  "check":[
+    {
+      "tip":"what is your name ?",
+      "color":"green",
+      "input":[
+        {
+          "test":".*",
+          "output":[
+            "__input__"
+          ]
+        }
+      ]
+    },{
+      "tip":"do you want some coffee? (y/n)",
+      "color":"green",
+      "input":[
+        {
+          "test":"^y|Y{1}$",
+          "output":"true"
+        },
+        {
+          "test":"^n|N{1}$",
+          "output":"false"
+        }
+      ]
+    },
+    {
+      "tip":"you like number list (end:n)",
+      "color":"green",
+      "each":"*  __input__\n",
+      "input":[
+        {
+          "test":"[0-9]+",
+          "output":"__again__"
+        },
+        {
+          "test":"^n|N{1}$",
+          "output":"__next__"
+        }
+      ]
+    }
+  ],
+  "fileName":".*\\.js",
+  "end":"---- build end --",
+  "bin":"node i"
+}
