@@ -21,7 +21,7 @@
         },
         {
           "test":"^n|N{1}$",
-          "output":"false"
+          "output":"__0__"
         }
       ]
     },
