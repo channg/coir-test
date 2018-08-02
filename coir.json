@@ -1,47 +1,92 @@
 {
-  "check":[
-    {
-      "tip":"what is your name ?",
-      "color":"green",
-      "input":[
+  "inquire": {
+    "1": {
+      "type": "input",
+      "question": "coir test input",
+      "output": {
+        "test": ".*",
+        "value": [
+          "coir-__this__",
+          "100"
+         ]
+      }
+    },
+    "2": {
+      "type": "input",
+      "question": "coir test select(a/b),use the default",
+      "default": "b",
+      "output": [
         {
-          "test":".*",
-          "output":[
-            "__input__"
-          ]
-        }
-      ]
-    },{
-      "tip":"do you want some coffee? (y/n)",
-      "color":"green",
-      "input":[
-        {
-          "test":"^y|Y{1}$",
-          "output":"true"
+          "test": "^[a|A]$",
+          "value": "0"
         },
         {
-          "test":"^n|N{1}$",
-          "output":"__0__"
+          "test": "^[b|B]$",
+          "value": "1"
         }
       ]
     },
-    {
-      "tip":"you like number list (end:n)",
-      "color":"green",
-      "each":"*  __input__\n",
-      "input":[
+    "3": {
+      "type": "input",
+      "question": "coir test jump (a/b/c),If you choose b, you'll go back to the first question",
+      "output": [
         {
-          "test":"[0-9]+",
-          "output":"__again__"
+          "test": "^[a|A]$",
+          "value": "aaa"
         },
         {
-          "test":"^n|N{1}$",
-          "output":"__next__"
+          "jump":"1",
+          "test": "^[b|B]$",
+          "value": "jump"
+        },
+        {
+          "test": "^[c|C]$",
+          "value": "you select c"
         }
       ]
+    },
+    "100": {
+      "type": "confirm",
+      "question": "coir test cofirm",
+      "default": false,
+      "output": [
+        {
+          "test": "true",
+          "value": "100"
+        },
+        {
+          "test": false,
+          "value": "1123123"
+        }
+      ]
+    },
+    "200": {
+      "type": "list",
+      "question": "coir test the list",
+      "default": "3000",
+      "output": [
+        {
+          "test": "java",
+          "value": "https://www.java.com/"
+        },
+        {
+          "test": "c#",
+          "value": "https://www.microsoft.com/"
+        },
+        {
+          "test": "golang",
+          "value": "https://golang.org/"
+        }
+      ]
+    },
+    "300": {
+      "type": "editor",
+      "question": "coir test the editor? in mac and *unix use the vim ,in windows use zhe txt",
+      "output": {
+        "test": ".*",
+        "value": "__this__"
+      }
     }
-  ],
-  "fileName":".*\\.js",
-  "end":"---- build end --",
-  "bin":"node i"
+  },
+  "fileName":".*\\.js"
 }
