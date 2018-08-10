@@ -1,29 +1,92 @@
 {
   "inquire": {
     "1": {
-      "question": "What's today's date(yyyy-mm-dd)?",
+      "type": "input",
+      "question": "coir test input",
       "output": {
-        "test": "^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$",
-        "value": "__this__"
+        "test": ".*",
+        "value": [
+          "__this__",
+          "100"
+        ]
       }
     },
-    "2":{
-      "type":"list",
-      "question": "Are you happy today",
-      "output": [{
-        "test": "happy",
-        "value": "__this__"
-      },{
-        "test": "not happy",
-        "value": "__this__"
-      }]
+    "2": {
+      "type": "input",
+      "question": "coir test select(a/b),use the default",
+      "default": "b",
+      "output": [
+        {
+          "test": "^[a|A]$",
+          "value": "0"
+        },
+        {
+          "test": "^[b|B]$",
+          "value": "1"
+        }
+      ]
     },
-    "3":{
-      "question": "A word about what you did today",
+    "3": {
+      "type": "input",
+      "question": "coir test jump (a/b/c),If you choose b, you'll go back to the first question",
+      "output": [
+        {
+          "test": "^[a|A]$",
+          "value": "aaa"
+        },
+        {
+          "jump":"1",
+          "test": "^[b|B]$",
+          "value": "jump"
+        },
+        {
+          "test": "^[c|C]$",
+          "value": "you select c"
+        }
+      ]
+    },
+    "100": {
+      "type": "confirm",
+      "question": "coir test cofirm",
+      "default": false,
+      "output": [
+        {
+          "test": "true",
+          "value": "100"
+        },
+        {
+          "test": false,
+          "value": "1123123"
+        }
+      ]
+    },
+    "200": {
+      "type": "list",
+      "question": "coir test the list",
+      "default": "3000",
+      "output": [
+        {
+          "test": "java",
+          "value": "https://www.java.com/"
+        },
+        {
+          "test": "c#",
+          "value": "https://www.microsoft.com/"
+        },
+        {
+          "test": "golang",
+          "value": "https://golang.org/"
+        }
+      ]
+    },
+    "300": {
+      "type": "editor",
+      "question": "coir test the editor? in mac and *unix use the vim ,in windows use zhe txt",
       "output": {
         "test": ".*",
         "value": "__this__"
       }
     }
-  }
+  },
+  "fileName":".*\\.js"
 }
